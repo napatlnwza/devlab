@@ -12,7 +12,7 @@ int main() {
         for (int i=1;i<=fac;i++) {
             ans*=i;
         }
+        cout << ans;
     }
-    cout << ans;
     return 0;
 }
