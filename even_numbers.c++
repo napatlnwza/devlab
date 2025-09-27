@@ -6,3 +6,13 @@
 //  https://www.borntodev.com/devlab/task/1312
 #include <iostream>
 using namespace std;
+
+int main() {
+    int even;
+    cin >> even;
+    for (int i=1;i<=even;i++) {
+        ++i;
+        cout << i << " ";
+    }
+    return 0;
+}
