@@ -25,6 +25,9 @@ public class login {
         else if (!username.equals(user)) {
             System.out.println("Login Fail");
         }
+        else if (!password.equals(pass)) {
+            System.out.println("Login Fail");
+        }
     }
 }
 // line 20,21=
