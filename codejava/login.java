@@ -10,7 +10,6 @@ public class login {
             System.out.println("Enter Password : ");
             pass = scan.nextLine();
             System.out.println("Sign in Succec \n");
-
             System.out.println("login page \n");
             System.out.println("Enter Username : ");
             username = scan.nextLine();
