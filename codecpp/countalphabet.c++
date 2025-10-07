@@ -7,6 +7,7 @@ using namespace std;
 
 int main() {
     string poom;
+    cout << "Enter String : ";
     cin >> poom;
     int i=0;
     while (i<poom.length()) {
