@@ -6,7 +6,9 @@ using namespace std;
 
 int main() {
     string name,age,stat;
+    cout << "Enter name : ";
     getline(cin,name);
+    cout << "Enter Age and Gender : ";
     getline(cin,age);
     string a="";
     for (int i=0;i<age.length();i++) {
@@ -19,7 +21,7 @@ int main() {
         }
     }
     bool gender;
-    int guea=stoi(a);
+    int Age=stoi(a);
     for (int i=0;i<age.length();i++) {
         if (age[i] == 'M' || age[i] == 'm') {
             gender=true;
@@ -28,7 +30,8 @@ int main() {
             gender=false;
         }
     }
-    if (guea >= 15) {
+    if (Age >= 15) {
+        cout << "Enter Status : ";
         getline(cin,stat);
         for (int i=0;i<stat.length();i++) {
             stat[i]=tolower(stat[i]);
@@ -40,14 +43,17 @@ int main() {
             if (stat[2] == 's') {
                 yn=true;
             }
+            yn=true;
         }
+        yn=true;
     }
     else if (stat[0] == 'n') {
         if (stat[1] == 'o') {
             yn=false;
         }
+        yn=false;
     }
-    if (guea < 15) {
+    if (Age < 15) {
         if (gender) {
             cout  << "Master " ;
             for (char i:name) {
@@ -61,7 +67,7 @@ int main() {
             }
         }
     }
-    else if(guea >= 15) {
+    else if(Age >= 15) {
         if (gender) {
             cout << "Mr ";
             for (char i:name) {
