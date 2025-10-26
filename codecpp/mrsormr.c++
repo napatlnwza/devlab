@@ -1,16 +1,20 @@
 // https://www.borntodev.com/devlab/task/1750
+
+
 #include <iostream>
 #include <string>
 #include <cctype>
 using namespace std;
 
 int main() {
+    // ประกาศตัวแปร
     string name,age,stat;
     cout << "Enter name : ";
     getline(cin,name);
     cout << "Enter Age and Gender : ";
     getline(cin,age);
     string a="";
+    // check age
     for (int i=0;i<age.length();i++) {
         if (isdigit(age[i])) {
             a+=age[i];
@@ -20,6 +24,7 @@ int main() {
             break;
         }
     }
+    // check gender
     bool gender;
     int Age=stoi(a);
     for (int i=0;i<age.length();i++) {
@@ -30,8 +35,9 @@ int main() {
             gender=false;
         }
     }
+    // check status
     if (Age >= 15) {
-        cout << "Enter Status : ";
+        cout << "Enter Status (Yes or No) : ";
         getline(cin,stat);
         for (int i=0;i<stat.length();i++) {
             stat[i]=tolower(stat[i]);
@@ -53,6 +59,7 @@ int main() {
         }
         yn=false;
     }
+    // cout 
     if (Age < 15) {
         if (gender) {
             cout  << "Master " ;
