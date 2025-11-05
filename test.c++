@@ -11,5 +11,6 @@ int main() {
     for (int i=a-1;i>=0;i--) {
         cout << b[i] << " ";
     }
+    
     return 0;
 }
