@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <cctype> 
+#include <vector>
+#include <algorithm>
 using namespace std;
 
 double isplus(double a,double b) {
@@ -29,15 +31,16 @@ double isdivine(double a,double b) {
 int main() {
     cout << "This is calculator program" << endl;
     cout << "1.Basic Number" << endl;
-    cout << "2.Multiple Number (Soon)" << endl;
-    cout << "3.Find Area" << endl;
+    cout << "2.Multiple Number (soon)" << endl;
+    cout << "3.Find Area (soon)" << endl;
+    cout << "4.Find Average " << endl;
     cout << "Enter Choice : ";
     string line;
     getline(cin ,line);
     for (char &c:line) {
         c=tolower(c);
     }
-    bool basic=false,mul=false,find=false;
+    bool basic=false,mul=false,find=false,Aver=false;
     for (int i=0;i<line.length();i++) {
         if (line[i] == '1' || line[i] == 'b') {
             basic=true;
@@ -50,7 +53,11 @@ int main() {
         else if (line[i] == '3' || line[i] == 'f') {
             find=true;
             break;
-        } 
+        }
+        else if (line[i] == '4' || line[i] == 'a') {
+            Aver=true;
+            break;
+        }
     }
     if (basic) {
         double a,b;
@@ -108,6 +115,59 @@ int main() {
             cin >> b;
             cout << "Ans is " << isdivine(a,b);
         }
+    }
+    if (Aver) {
+        vector<double> data;
+        int ndata;
+        string know;
+        cout << "Do you know Num of  Data ? (yes or no) : ";
+        getline(cin,know);
+        bool know1=false;
+        for (char &i:know) {
+            i=tolower(i);
+            if (i == 'y') {
+                know1=true;
+            }
+            else if (i == 'n') {
+                know1=false;
+            }
+        }
+        if (know1) {
+            cout << "Enter Num of Data : ";
+            int a;
+            cin >> a;
+            for (int i=0;i<a;i++) {
+                int k;
+                cout << "Input Data " << i+1 << " : ";
+                cin >> k;
+                data.push_back(k);
+            }
+        }
+        else if (!know1) {
+            int count=0;
+            string stop;
+            cout << "If you write  stop  The program will stop accepting values" << endl;
+            int i=1;
+            while (true) {
+                double l;
+                cout << "Input Data " << i << " : ";
+                getline(cin,stop);
+                if (stop == "stop" || stop == "Stop") {
+                    break;
+                }
+                l=stod(stop);
+                data.push_back(l);
+                count++;
+                i++;
+            }
+        }
+        double sum=0;
+        for (int i=0;i<data.size();i++) {
+            sum+=data[i];
+        }
+        double avr=sum/(data.size());
+        cout << "The Average is " << avr;
+        return 0;
     }
     return 0;
 }
