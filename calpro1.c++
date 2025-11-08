@@ -3,6 +3,8 @@
 #include <cctype> 
 #include <vector>
 #include <algorithm>
+#include <cmath>
+const double pi =3.14159;
 using namespace std;
 
 double isplus(double a,double b) {
@@ -18,7 +20,6 @@ double ismulti(double a,double b) {
 }
 
 double isdivine(double a,double b) {
-    
     if (b == 0) {
         cout << "Cannot divine by zero!";
         return 0;
@@ -28,11 +29,15 @@ double isdivine(double a,double b) {
     }
 }
 
+double circle(double r) {
+    return pi*pow(r,2);
+}
+
 int main() {
     cout << "This is calculator program" << endl;
     cout << "1.Basic Number" << endl;
     cout << "2.Multiple Number (soon)" << endl;
-    cout << "3.Find Area (soon)" << endl;
+    cout << "3.Find Area" << endl;
     cout << "4.Find Average " << endl;
     cout << "Enter Choice : ";
     string line;
@@ -114,6 +119,44 @@ int main() {
             cout << "Input B : ";
             cin >> b;
             cout << "Ans is " << isdivine(a,b);
+        }
+    }
+    if (find) {
+        cout << "1.Circle Area" << endl;
+        cout << "2.Rectangular Area" << endl;
+        cout << "3.Triangle Area" << endl;
+        cout << "4.Square Area" << endl;
+        cout << "Enter Choice : ";
+        string ch;
+        getline(cin,ch);
+        for (char &i:ch) {
+            i=tolower(i);
+        }
+        bool cir,rec,tri,squ;
+        for (char i:ch) {
+            if (i == '1' || i == 'c') {
+                cir=true;
+                break;
+            }
+            else if (i == '2' || i == 'r') {
+                rec=true;
+                break;
+            }
+            else if (i == '3' || i == 't') {
+                tri=true;
+                break;
+            }
+            else if (i == '4' || i == 's') {
+                squ=true;
+                break;
+            }
+        }
+        if (cir) {
+            double r;
+            cout << "Input radius : ";
+            cin >> r;
+            cout << "Circle Area is " << circle(r);
+            return 0;
         }
     }
     if (Aver) {
