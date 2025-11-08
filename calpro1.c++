@@ -4,7 +4,9 @@
 #include <vector>
 #include <algorithm>
 #include <cmath>
+#include <iomanip>
 const double pi =3.14159;
+#define ar 0.5
 using namespace std;
 
 double isplus(double a,double b) {
@@ -31,6 +33,18 @@ double isdivine(double a,double b) {
 
 double circle(double r) {
     return pi*pow(r,2);
+}
+
+double rectang(double w,double l) {
+    return w*l;
+}
+
+double Triangle(double h,double b) {
+    return ar*h*b;
+}
+
+double Square(double side) {
+    return pow(side,2);
 }
 
 int main() {
@@ -66,7 +80,7 @@ int main() {
     }
     if (basic) {
         double a,b;
-        bool plus,minus,multi,divine;
+        bool plus=false,minus=false,multi=false,divine=false;
         cout << "1.A+B" << endl;
         cout << "2.A-b" << endl;
         cout << "3.A*B" << endl;
@@ -98,6 +112,7 @@ int main() {
             cout << "Input B : ";
             cin >> b;
             cout << "Ans is " << isplus(a,b);
+            return 0;
         }
         else if (minus) {
             cout << "Input A : ";
@@ -105,6 +120,7 @@ int main() {
             cout << "Input B : ";
             cin >> b;
             cout << "Ans is " << isminus(a,b);
+            return 0;
         }
         else if (multi) {
             cout << "Input A : ";
@@ -112,6 +128,7 @@ int main() {
             cout << "Input B : ";
             cin >> b;
             cout << "Ans is " << ismulti(a,b);
+            return 0;
         }
         else if (divine) {
             cout << "Input A : ";
@@ -119,6 +136,7 @@ int main() {
             cout << "Input B : ";
             cin >> b;
             cout << "Ans is " << isdivine(a,b);
+            return 0;
         }
     }
     if (find) {
@@ -132,7 +150,7 @@ int main() {
         for (char &i:ch) {
             i=tolower(i);
         }
-        bool cir,rec,tri,squ;
+        bool cir=false,rec=false,tri=false,squ=false;
         for (char i:ch) {
             if (i == '1' || i == 'c') {
                 cir=true;
@@ -156,6 +174,31 @@ int main() {
             cout << "Input radius : ";
             cin >> r;
             cout << "Circle Area is " << circle(r);
+            return 0;
+        }
+        if (rec) {
+            double w,l;
+            cout << "Input wide : ";
+            cin >> w;
+            cout << "Input long : ";
+            cin >> l;
+            cout << "Rectangular Area is " << rectang(w,l);
+            return 0;
+        }
+        if (tri) {
+            double h,b;
+            cout << "Input Hight : ";
+            cin >> h;
+            cout << "Input Base : ";
+            cin >> b;
+            cout << "Triangle Area is " << Triangle(h,b);
+            return 0;
+        }
+        if (squ) {
+            double side;
+            cout << "Input Side : ";
+            cin >> side;
+            cout << "Square Area is " << Square(side);
             return 0;
         }
     }
