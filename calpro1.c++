@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <cmath>
 #include <iomanip>
+#include <stack>
 const double pi =3.14159;
 #define ar 0.5
 using namespace std;
@@ -47,10 +48,85 @@ double Square(double side) {
     return pow(side,2);
 }
 
+int check(char op) {
+    if (op == '+' || op == '-') {
+        return 1;
+    }
+    else if (op == '*' || op == '/') {
+        return 2;
+    }
+    return 0;
+}
+
+double applyOp(double a,double b,char op) {
+    switch (op) {
+        case '+':
+            return a+b;
+        case '-':
+            return a-b;
+        case '*':
+            return a*b;
+        case '/':
+            if (b==0) {
+                cout << "Error";
+                return 0;
+            }
+            else {
+                return a/b;
+            }
+        default :
+            return 0;
+    }
+}
+
+double multinumber(string line) {
+    stack<double> hold;
+    stack<char> oper;
+    string num="";
+    for (int i=0;i<line.length();i++) {
+        char c=line[i];
+        if (isspace(c)) {
+            continue;
+        }
+        if (isdigit(c) || c=='.') {
+            num+=c;
+        }
+        else if (!isdigit(c)) {
+            if (!num.empty()) {
+                hold.push(stod(num));
+                num="";
+            }
+            while (!oper.empty() && check(oper.top()) >= check(c)) {
+                double val2=hold.top();
+                hold.pop();
+                double val1=hold.top();
+                hold.pop();
+                char op=oper.top();
+                oper.pop();
+                hold.push(applyOp(val1,val2,op));
+            }
+            oper.push(c);
+        }
+    }
+    if (!num.empty()) {
+        hold.push(stod(num));
+    }
+    while (!oper.empty()) {
+        double val2=hold.top();
+        hold.pop();
+        double val1=hold.top();
+        hold.pop();
+        char op=oper.top();
+        oper.pop();
+        hold.push(applyOp(val1,val2,op));
+    }
+    return hold.top();
+}
+
 int main() {
     cout << "This is calculator program" << endl;
     cout << "1.Basic Number" << endl;
-    cout << "2.Multiple Number (soon)" << endl;
+    cout << "2.Multiple Number" << endl;
     cout << "3.Find Area" << endl;
     cout << "4.Find Average " << endl;
     cout << "Enter Choice : ";
@@ -138,6 +214,14 @@ int main() {
             cout << "Ans is " << isdivine(a,b);
             return 0;
         }
+    }
+    if (mul) {
+        string line;
+        cout << "Input Multiple Number : ";
+        getline(cin,line);
+        double ans=multinumber(line);
+        cout << "Ans is " << ans;
+        return 0;
     }
     if (find) {
         cout << "1.Circle Area" << endl;
