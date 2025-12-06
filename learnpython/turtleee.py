@@ -138,7 +138,6 @@ from time import *
 speed(1)
 pensize(2)
 color("red", "pink")
-
 begin_fill()
 left(140)
 forward(180)
